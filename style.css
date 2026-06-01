@@ -183,8 +183,8 @@ h1{
 
 .imagem-sez {
     display: block;
-    width: 500px;
-    max-width: 85%;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto 40px auto;
 }
 
@@ -216,15 +216,6 @@ h1{
     opacity: 0.9;
 }
 
-.pagina-sez {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.pagina-sez .rodape {
-    margin-top: auto;
-}
 
 .titulo-secao {
     text-align: center;
@@ -234,5 +225,6 @@ h1{
     margin-bottom: 25px;
 }
 
-  margin-top: 100px;
+ .rodape {
+    margin-top: 100px;
 }
