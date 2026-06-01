@@ -1,4 +1,4 @@
-terhtml, body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,7 +35,7 @@ terhtml, body {
 
 h1{
   text-align: center;
-  font-size: clamp(1.7rem);
+  font-size: 3rem;;
   margin: 0 auto;
   margin-bottom: -25px;
   color: #b17a7d;
@@ -159,4 +159,12 @@ h1{
     color: #b17a7d;
 
     
+}
+
+.pagina-sez {
+    background-color: #f5efe8;
+}
+
+.pagina-sez h1 {
+    color: #5f7551;
 }
