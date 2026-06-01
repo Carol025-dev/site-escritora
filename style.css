@@ -196,31 +196,9 @@ h1{
     line-height: 1.8;
 }
 
-.audio-sez {
-    text-align: center;
-    margin: 60px auto;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.audio-sez h2 {
-    color: #5f7551;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-}
-
-.audio-sez p {
-    margin-bottom: 20px;
-}
-
-.audio-sez audio {
-    width: 100%;
-    max-width: 500px;
-}
-
 .formatos-sez {
     text-align: center;
-    max-width: 900px;
+    max-width: 800px;
     margin: 70px auto;
     padding: 0 20px;
 }
@@ -229,32 +207,11 @@ h1{
     color: #5f7551;
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
-    margin-bottom: 40px;
 }
 
-.formato {
-    margin-bottom: 50px;
+.formatos-sez p {
+    font-size: 1.1rem;
 }
-
-.formato h3 {
-    color: #5f7551;
-}
-
-.formato audio {
-    width: 100%;
-    max-width: 500px;
-}
-
-.botao-sez {
-    display: inline-block;
-    background-color: #5f7551;
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
 .botao-sez:hover {
     opacity: 0.9;
 }
