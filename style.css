@@ -215,3 +215,13 @@ h1{
 .botao-sez:hover {
     opacity: 0.9;
 }
+
+.pagina-sez {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-sez .rodape {
+    margin-top: auto;
+}
