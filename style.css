@@ -195,3 +195,25 @@ h1{
 .pagina-sez .texto p {
     line-height: 1.8;
 }
+
+.audio-sez {
+    text-align: center;
+    margin: 60px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.audio-sez h2 {
+    color: #5f7551;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+}
+
+.audio-sez p {
+    margin-bottom: 20px;
+}
+
+.audio-sez audio {
+    width: 100%;
+    max-width: 500px;
+}
