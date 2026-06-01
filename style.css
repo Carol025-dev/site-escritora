@@ -113,6 +113,13 @@ h1{
     text-align: center;
 }
 
+.pagina-sez {
+    background-color: #f5efe8;
+}
+
+.pagina-sez h1 {
+    color: #5f7551;
+}
 .rodape {
     color: #2e2e2e;
     padding: 20px;
