@@ -174,3 +174,12 @@ h1{
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.5rem, 6vw, 3.5rem);
 }
+
+.chamada-sez {
+    text-align: center;
+    color: #5f7551;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
