@@ -167,12 +167,9 @@ h1{
 
 .pagina-sez h1 {
     color: #5f7551;
-}
-
-.pagina-sez h1 {
-    color: #5f7551;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2.3rem, 5vw, 3rem);
+    margin-bottom: 10px;
 }
 
 .chamada-sez {
@@ -180,6 +177,21 @@ h1{
     color: #5f7551;
     font-style: italic;
     font-size: 1.3rem;
-    margin-top: -20px;
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.imagem-sez {
+    display: block;
+    width: 500px;
+    max-width: 85%;
+    margin: 0 auto 40px auto;
+}
+
+.pagina-sez .texto {
+    max-width: 900px;
+}
+
+.pagina-sez .texto p {
+    line-height: 1.8;
 }
