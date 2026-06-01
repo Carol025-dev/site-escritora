@@ -168,3 +168,9 @@ h1{
 .pagina-sez h1 {
     color: #5f7551;
 }
+
+.pagina-sez h1 {
+    color: #5f7551;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+}
