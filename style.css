@@ -228,3 +228,38 @@ h1{
  .rodape {
     margin-top: 100px;
 }
+
+.pnab {
+    max-width: 900px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.pnab h2 {
+    color: #5f7551;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.pnab .destaque {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.logos-pnab {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 30px auto;
+    display: block;
+}
+
+.pnab .legal {
+    font-size: 0.9rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
