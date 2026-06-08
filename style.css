@@ -264,3 +264,8 @@ h1{
     margin: 0 auto;
     line-height: 1.6;
 }
+
+.rodape i {
+    color: #b17a7d;
+    margin-right: 8px;
+}
