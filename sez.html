@@ -134,6 +134,7 @@ Sez de Taurea e as Grandes Árvores é uma aventura mágica sobre coragem, desco
     }
   }
 </style>
+    
 <section class="audio-section">
   <h2>Onde ouvir</h2>
 
@@ -141,14 +142,10 @@ Sez de Taurea e as Grandes Árvores é uma aventura mágica sobre coragem, desco
 
   <div class="audio-player">
     <audio controls>
-      <source src="audiolivro" type="audio/mpeg">
+      <source src="audiolivro.mp3" type="audio/mpeg">
       Seu navegador não suporta áudio.
     </audio>
   </div>
-
-  <a href="audiolivro" download class="audio-button">
-    ↓ Baixar o audiolivro
-  </a>
 </section>
 
 <style>
@@ -171,26 +168,8 @@ Sez de Taurea e as Grandes Árvores é uma aventura mágica sobre coragem, desco
     margin-bottom: 30px;
   }
 
-  .audio-player {
-    margin-bottom: 25px;
-  }
-
   .audio-player audio {
     width: 100%;
-  }
-
-  .audio-button {
-    display: inline-block;
-    padding: 14px 28px;
-    border: 1px solid #65775a;
-    border-radius: 8px;
-    color: #65775a;
-    text-decoration: none;
-    font-size: 17px;
-  }
-
-  .audio-button:hover {
-    opacity: 0.8;
   }
 
   @media (max-width: 600px) {
@@ -199,7 +178,6 @@ Sez de Taurea e as Grandes Árvores é uma aventura mágica sobre coragem, desco
     }
   }
 </style>
-    
   <script>
 document.querySelector('.menu-icon').addEventListener('click', function() {
     document.querySelector('.menulinks').classList.toggle('active');
