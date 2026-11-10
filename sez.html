@@ -272,6 +272,7 @@ Sez de Taurea e as Grandes Árvores foi contemplado pela Política Nacional Aldi
 
 </footer>
 
+
 <!-- RASTREAMENTO DOS EVENTOS -->
 
 <script>
@@ -283,7 +284,7 @@ document.querySelector('.menu-icon').addEventListener('click', function() {
 });
 
 
-// FUNÇÃO PARA ENVIAR EVENTOS AO GOOGLE TAG MANAGER
+// ENVIO DE EVENTOS AO GOOGLE TAG MANAGER
 
 function trackEvent(eventName, parameters = {}) {
 
@@ -298,7 +299,7 @@ function trackEvent(eventName, parameters = {}) {
 }
 
 
-// EVENTO: ABRIR E-BOOK
+// E-BOOK: ABERTURA
 
 document.getElementById('ebook-open').addEventListener('click', function() {
 
@@ -309,7 +310,7 @@ document.getElementById('ebook-open').addEventListener('click', function() {
 });
 
 
-// EVENTO: BAIXAR E-BOOK
+// E-BOOK: DOWNLOAD
 
 document.getElementById('ebook-download').addEventListener('click', function() {
 
@@ -320,56 +321,116 @@ document.getElementById('ebook-download').addEventListener('click', function() {
 });
 
 
-// EVENTOS: AUDIOLIVRO
+// AUDIOLIVRO
 
 const player = document.getElementById('audiobook-player');
 
 let audioStarted = false;
 let progressMilestones = [];
-let playStartedAt = null;
+
+
+// CONTABILIZAR TEMPO EFETIVAMENTE REPRODUZIDO
+
 let listenedMilliseconds = 0;
-
-
-// CONTABILIZA TEMPO REAL DE REPRODUÇÃO
+let listeningStartedAt = null;
 
 function startListeningTimer() {
 
-    if (playStartedAt === null) {
-        playStartedAt = Date.now();
+    if (listeningStartedAt === null) {
+        listeningStartedAt = Date.now();
     }
 
 }
 
 function stopListeningTimer() {
 
-    if (playStartedAt !== null) {
+    if (listeningStartedAt !== null) {
 
-        listenedMilliseconds += Date.now() - playStartedAt;
+        listenedMilliseconds += Date.now() - listeningStartedAt;
 
-        playStartedAt = null;
+        listeningStartedAt = null;
 
     }
 
 }
 
+function getListenedSeconds() {
 
-// INÍCIO / RETOMADA
+    let currentTime = listenedMilliseconds;
+
+    if (listeningStartedAt !== null) {
+        currentTime += Date.now() - listeningStartedAt;
+    }
+
+    return Math.floor(currentTime / 1000);
+
+}
+
+
+// CALCULAR O PERCENTUAL DO CONTEÚDO REALMENTE OUVIDO
+
+function getProgressPercent() {
+
+    if (!isFinite(player.duration) || player.duration <= 0) {
+        return 0;
+    }
+
+    let playedSeconds = 0;
+
+    for (let i = 0; i < player.played.length; i++) {
+
+        playedSeconds +=
+            player.played.end(i) - player.played.start(i);
+
+    }
+
+    return Math.min(
+        100,
+        Math.floor((playedSeconds / player.duration) * 100)
+    );
+
+}
+
+
+// REUNIR TODOS OS DADOS DO PLAYER
+
+function getAudioData() {
+
+    return {
+
+        audio_position: Math.floor(player.currentTime),
+
+        listened_seconds: getListenedSeconds(),
+
+        duration_seconds: isFinite(player.duration)
+            ? Math.floor(player.duration)
+            : 0,
+
+        progress_percent: getProgressPercent()
+
+    };
+
+}
+
+
+// INÍCIO E RETOMADA
 
 player.addEventListener('play', function() {
 
-    trackEvent('audiobook_play', {
-        audio_position: Math.floor(player.currentTime)
-    });
+    trackEvent('audiobook_play', getAudioData());
 
     if (!audioStarted) {
 
         audioStarted = true;
 
-        trackEvent('audiobook_start');
+        trackEvent('audiobook_start', getAudioData());
 
     }
 
 });
+
+
+// ÁUDIO REALMENTE COMEÇOU A TOCAR
 
 player.addEventListener('playing', function() {
 
@@ -386,10 +447,7 @@ player.addEventListener('pause', function() {
 
     if (!player.ended && audioStarted) {
 
-        trackEvent('audiobook_pause', {
-            audio_position: Math.floor(player.currentTime),
-            listened_seconds: Math.floor(listenedMilliseconds / 1000)
-        });
+        trackEvent('audiobook_pause', getAudioData());
 
     }
 
@@ -405,7 +463,7 @@ player.addEventListener('waiting', function() {
 });
 
 
-// BUSCA / AVANÇO NO ÁUDIO
+// BUSCA NO ÁUDIO
 
 player.addEventListener('seeking', function() {
 
@@ -426,13 +484,11 @@ player.addEventListener('seeked', function() {
 
 player.addEventListener('timeupdate', function() {
 
-    if (!player.duration || !isFinite(player.duration)) {
+    if (!isFinite(player.duration) || player.duration <= 0) {
         return;
     }
 
-    const progress = Math.floor(
-        (player.currentTime / player.duration) * 100
-    );
+    const progress = getProgressPercent();
 
     [25, 50, 75].forEach(function(threshold) {
 
@@ -444,7 +500,11 @@ player.addEventListener('timeupdate', function() {
             progressMilestones.push(threshold);
 
             trackEvent('audiobook_progress', {
+
+                ...getAudioData(),
+
                 progress_percent: threshold
+
             });
 
         }
@@ -461,15 +521,17 @@ player.addEventListener('ended', function() {
     stopListeningTimer();
 
     trackEvent('audiobook_complete', {
-        progress_percent: 100,
-        duration_seconds: Math.floor(player.duration),
-        listened_seconds: Math.floor(listenedMilliseconds / 1000)
+
+        ...getAudioData(),
+
+        progress_percent: 100
+
     });
 
-    // Prepara uma eventual nova reprodução
-
     audioStarted = false;
+
     progressMilestones = [];
+
     listenedMilliseconds = 0;
 
 });
