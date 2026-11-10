@@ -12,32 +12,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
-<!-- Google Tag Manager -->
+<!-- GOOGLE TAG MANAGER -->
 <script>
-window.dataLayer = window.dataLayer || [];
-</script>
-<script>
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+(function(w,d,s,l,i){
+w[l]=w[l]||[];
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),
+dl=l!='dataLayer'?'&l='+l:'';
+j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WXVCVDR9');
 </script>
-<!-- End Google Tag Manager -->
+<!-- FIM GOOGLE TAG MANAGER -->
 
 </head>
 
 <body class="pagina-sez">
 
-<!-- Google Tag Manager (noscript) -->
+<!-- GOOGLE TAG MANAGER NOSCRIPT -->
 <noscript>
 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXVCVDR9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>
+height="0" width="0"
+style="display:none;visibility:hidden"></iframe>
 </noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- FIM GOOGLE TAG MANAGER NOSCRIPT -->
 
 <header class="topo">
+
     <div class="nome">Ana Carolina Marques</div>
+
     <div class="menu-icon">
       <i class="fas fa-bars"></i>
     </div>
@@ -48,6 +53,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <a href="cassandra.html">Cassandra e Pipoca</a>
       <a href="sez.html">Sez de Taurea e as Grandes Árvores</a>
     </div>
+
 </header>
 
 <div class="texto">
@@ -82,6 +88,8 @@ Sez de Taurea e as Grandes Árvores é uma aventura mágica sobre coragem, desco
 
 <section class="formatos-sez">
 
+<!-- E-BOOK -->
+
 <section class="ebook-section">
 
 <h2 style="color:#65775a;font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;line-height:1.2;margin-bottom:20px;">
@@ -92,18 +100,26 @@ Onde ler
 
 <div class="ebook-buttons">
 
-<a href="ebook.pdf" target="_blank" class="ebook-button" id="ebook-open">
+<a href="ebook.pdf"
+   target="_blank"
+   class="ebook-button"
+   id="ebook-open">
 📖 Ler o e-book
 </a>
 
-<a href="ebook.pdf" download class="ebook-button secondary" id="ebook-download">
+<a href="ebook.pdf"
+   download
+   class="ebook-button secondary"
+   id="ebook-download">
 ↓ Baixar o e-book
 </a>
 
 </div>
+
 </section>
 
 <style>
+
 .ebook-section {
     max-width: 800px;
     margin: 60px auto;
@@ -161,7 +177,10 @@ Onde ler
         box-sizing: border-box;
     }
 }
+
 </style>
+
+<!-- AUDIOLIVRO -->
 
 <section class="audio-section">
 
@@ -172,15 +191,18 @@ Onde ouvir
 <p>Ouça o audiolivro gratuitamente.</p>
 
 <div class="audio-player">
-    <audio id="audiobook-player" controls preload="metadata">
-      <source src="./audiolivro.mp3.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
+
+<audio id="audiobook-player" controls preload="metadata">
+    <source src="./audiolivro.mp3.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+</audio>
+
 </div>
 
 </section>
 
 <style>
+
 .audio-section {
     max-width: 800px;
     margin: 60px auto;
@@ -209,7 +231,12 @@ Onde ouvir
         font-size: 38px;
     }
 }
+
 </style>
+
+</section>
+
+<!-- RECONHECIMENTO CULTURAL -->
 
 <section class="pnab">
 
@@ -225,8 +252,9 @@ Sez de Taurea e as Grandes Árvores foi contemplado pela Política Nacional Aldi
 
 </section>
 
-</section>
 </div>
+
+<!-- RODAPÉ -->
 
 <footer class="rodape">
 
@@ -244,93 +272,206 @@ Sez de Taurea e as Grandes Árvores foi contemplado pela Política Nacional Aldi
 
 </footer>
 
+<!-- RASTREAMENTO DOS EVENTOS -->
+
 <script>
-// Menu mobile
+
+// MENU MOBILE
+
 document.querySelector('.menu-icon').addEventListener('click', function() {
     document.querySelector('.menulinks').classList.toggle('active');
 });
 
-// Envio de eventos para o Google Tag Manager
-function trackEvent(eventName, parameters) {
+
+// FUNÇÃO PARA ENVIAR EVENTOS AO GOOGLE TAG MANAGER
+
+function trackEvent(eventName, parameters = {}) {
+
     window.dataLayer = window.dataLayer || [];
+
     window.dataLayer.push({
         event: eventName,
+        book_title: 'Sez de Taurea e as Grandes Árvores',
         ...parameters
     });
+
 }
 
-// Livro: abertura e download
-document.getElementById('ebook-open').addEventListener('click', function() {
-    trackEvent('ebook_open', {
-        book_title: 'Sez de Taurea e as Grandes Árvores'
-    });
-});
 
-document.getElementById('ebook-download').addEventListener('click', function() {
-    trackEvent('ebook_download', {
-        book_title: 'Sez de Taurea e as Grandes Árvores',
+// EVENTO: ABRIR E-BOOK
+
+document.getElementById('ebook-open').addEventListener('click', function() {
+
+    trackEvent('ebook_open', {
         file_name: 'ebook.pdf'
     });
+
 });
 
-// Audiolivro
+
+// EVENTO: BAIXAR E-BOOK
+
+document.getElementById('ebook-download').addEventListener('click', function() {
+
+    trackEvent('ebook_download', {
+        file_name: 'ebook.pdf'
+    });
+
+});
+
+
+// EVENTOS: AUDIOLIVRO
+
 const player = document.getElementById('audiobook-player');
 
-let started = false;
-let completedThresholds = [];
-let lastProgress = 0;
+let audioStarted = false;
+let progressMilestones = [];
+let playStartedAt = null;
+let listenedMilliseconds = 0;
+
+
+// CONTABILIZA TEMPO REAL DE REPRODUÇÃO
+
+function startListeningTimer() {
+
+    if (playStartedAt === null) {
+        playStartedAt = Date.now();
+    }
+
+}
+
+function stopListeningTimer() {
+
+    if (playStartedAt !== null) {
+
+        listenedMilliseconds += Date.now() - playStartedAt;
+
+        playStartedAt = null;
+
+    }
+
+}
+
+
+// INÍCIO / RETOMADA
 
 player.addEventListener('play', function() {
+
     trackEvent('audiobook_play', {
-        book_title: 'Sez de Taurea e as Grandes Árvores'
+        audio_position: Math.floor(player.currentTime)
     });
 
-    if (!started) {
-        started = true;
-        trackEvent('audiobook_start', {
-            book_title: 'Sez de Taurea e as Grandes Árvores'
-        });
+    if (!audioStarted) {
+
+        audioStarted = true;
+
+        trackEvent('audiobook_start');
+
     }
+
 });
+
+player.addEventListener('playing', function() {
+
+    startListeningTimer();
+
+});
+
+
+// PAUSA
 
 player.addEventListener('pause', function() {
-    if (!player.ended && started) {
+
+    stopListeningTimer();
+
+    if (!player.ended && audioStarted) {
+
         trackEvent('audiobook_pause', {
-            book_title: 'Sez de Taurea e as Grandes Árvores',
-            listened_seconds: Math.floor(player.currentTime)
+            audio_position: Math.floor(player.currentTime),
+            listened_seconds: Math.floor(listenedMilliseconds / 1000)
         });
+
     }
+
 });
+
+
+// BUFFERING
+
+player.addEventListener('waiting', function() {
+
+    stopListeningTimer();
+
+});
+
+
+// BUSCA / AVANÇO NO ÁUDIO
+
+player.addEventListener('seeking', function() {
+
+    stopListeningTimer();
+
+});
+
+player.addEventListener('seeked', function() {
+
+    if (!player.paused && !player.ended) {
+        startListeningTimer();
+    }
+
+});
+
+
+// PROGRESSO: 25%, 50% E 75%
 
 player.addEventListener('timeupdate', function() {
-    if (!player.duration || !isFinite(player.duration)) return;
 
-    const progress = Math.floor((player.currentTime / player.duration) * 100);
+    if (!player.duration || !isFinite(player.duration)) {
+        return;
+    }
+
+    const progress = Math.floor(
+        (player.currentTime / player.duration) * 100
+    );
 
     [25, 50, 75].forEach(function(threshold) {
-        if (progress >= threshold && !completedThresholds.includes(threshold)) {
-            completedThresholds.push(threshold);
+
+        if (
+            progress >= threshold &&
+            !progressMilestones.includes(threshold)
+        ) {
+
+            progressMilestones.push(threshold);
 
             trackEvent('audiobook_progress', {
-                book_title: 'Sez de Taurea e as Grandes Árvores',
                 progress_percent: threshold
             });
+
         }
+
     });
 
-    lastProgress = progress;
 });
 
+
+// CONCLUSÃO DO AUDIOLIVRO
+
 player.addEventListener('ended', function() {
+
+    stopListeningTimer();
+
     trackEvent('audiobook_complete', {
-        book_title: 'Sez de Taurea e as Grandes Árvores',
         progress_percent: 100,
-        duration_seconds: Math.floor(player.duration)
+        duration_seconds: Math.floor(player.duration),
+        listened_seconds: Math.floor(listenedMilliseconds / 1000)
     });
 
-    started = false;
-    completedThresholds = [];
-    lastProgress = 0;
+    // Prepara uma eventual nova reprodução
+
+    audioStarted = false;
+    progressMilestones = [];
+    listenedMilliseconds = 0;
+
 });
 
 </script>
