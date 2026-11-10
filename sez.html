@@ -370,25 +370,14 @@ function getListenedSeconds() {
 // CALCULAR O PERCENTUAL DO CONTEÚDO REALMENTE OUVIDO
 
 function getProgressPercent() {
+  if (!player.duration || !Number.isFinite(player.duration)) {
+    return 0;
+  }
 
-    if (!isFinite(player.duration) || player.duration <= 0) {
-        return 0;
-    }
-
-    let playedSeconds = 0;
-
-    for (let i = 0; i < player.played.length; i++) {
-
-        playedSeconds +=
-            player.played.end(i) - player.played.start(i);
-
-    }
-
-    return Math.min(
-        100,
-        Math.floor((playedSeconds / player.duration) * 100)
-    );
-
+  return Math.min(
+    100,
+    Math.floor((player.currentTime / player.duration) * 100)
+  );
 }
 
 
